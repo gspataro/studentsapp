@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>
-        Students List
+        Institutes List
     </x-slot:title>
 
-    Hello world!
+    Here the institutes list
 </x-layout>

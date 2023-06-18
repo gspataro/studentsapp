@@ -7,7 +7,23 @@
         @vite('resources/css/app.css')
     </head>
 
-    <body>
-        {{$slot}}
+    <body class="bg-gray-300 text-black">
+        <div class="container max-w-4xl mx-auto my-12">
+            <div class="bg-white border-b-gray-200 border-b-[1px] rounded-t-lg p-5">
+                <x-navbar :items="[
+                    [
+                        'label' => 'Students',
+                        'route' => 'student.list'
+                    ],
+                    [
+                        'label' => 'Institutes',
+                        'route' => 'institute.list'
+                    ]
+                ]"/>
+            </div>
+            <div class="bg-white rounded-b-lg p-5">
+                {{$slot}}
+            </div>
+        </div>
     </body>
 </html>
