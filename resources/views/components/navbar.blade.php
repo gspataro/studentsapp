@@ -6,7 +6,8 @@
         <li class="d-block">
             <a href="{{route($item['route'])}}" @class([
                 'd-block',
-                'p-3',
+                'py-3',
+                'px-5',
                 'uppercase',
                 'font-semibold',
                 'bg-indigo-600' => $isActive,
