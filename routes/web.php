@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InstituteController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [StudentController::class, 'list']);
+Route::get('/', [StudentController::class, 'list'])->name('student.list');
+
+Route::get('/institutes', [InstituteController::class, 'list'])->name('institute.list');
