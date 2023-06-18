@@ -10,4 +10,9 @@ class StudentController extends Controller
     {
         return view('student.list');
     }
+
+    public function new(): View
+    {
+        return view('student.new');
+    }
 }
