@@ -1,5 +1,6 @@
 <div @class([
-    'p-3',
+    'py-2',
+    'px-3',
     'mb-3',
     'rounded-lg',
     'border-2',
