@@ -44,14 +44,14 @@ class StudentController extends Controller
         return to_route('student.new')->with('success', 'Student created successfully!');
     }
 
-    public function update(Student $student): View
+    public function edit(Student $student): View
     {
-        return view('student.update', [
+        return view('student.edit', [
             'student' => $student
         ]);
     }
 
-    public function change(Request $request, Student $student): RedirectResponse
+    public function update(Request $request, Student $student): RedirectResponse
     {
         $request->validate([
             'name' => 'required|max:255',
@@ -67,7 +67,7 @@ class StudentController extends Controller
 
         $student->save();
 
-        return to_route('student.update', [
+        return to_route('student.edit', [
             'student' => $student
         ])->with('success', 'Student updated successfully!');
     }

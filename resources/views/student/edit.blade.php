@@ -9,7 +9,7 @@
         {{session('success')}}
     @endif
 
-    <form action="{{route('student.change', ['student' => $student])}}" method="post">
+    <form action="{{route('student.update', ['student' => $student])}}" method="post">
         @csrf
         <x-input.text name="name" placeholder="Name" value="{{old('name') ?? $student->name}}" />
         <x-input.text name="surname" placeholder="Surname" value="{{old('surname') ?? $student->surname}}" />
