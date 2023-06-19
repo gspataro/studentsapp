@@ -10,7 +10,7 @@
     </x-slot>
 
     @if (session('message'))
-        {{session('message')}}
+        <x-alert :message="session('message')" type="success"/>
     @endif
 
     <table class="w-full">
