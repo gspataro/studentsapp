@@ -20,7 +20,7 @@ class StudentController extends Controller
 
     public function new(): View
     {
-        return view('student.new');
+        return view('student.edit');
     }
 
     public function store(Request $request): RedirectResponse
