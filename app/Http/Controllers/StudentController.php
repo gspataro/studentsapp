@@ -39,4 +39,13 @@ class StudentController extends Controller
 
         return to_route('student.new')->with('success', 'Student created successfully!');
     }
+
+    public function update($id): View
+    {
+        $student = Student::firstWhere('id', $id);
+
+        return view('student.update', [
+            'student' => $student
+        ]);
+    }
 }
