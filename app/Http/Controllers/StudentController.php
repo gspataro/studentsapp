@@ -11,7 +11,11 @@ class StudentController extends Controller
 {
     public function list(): View
     {
-        return view('student.list');
+        $students = Student::all();
+
+        return view('student.list', [
+            'students' => $students
+        ]);
     }
 
     public function new(): View
