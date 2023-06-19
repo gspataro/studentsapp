@@ -24,10 +24,14 @@
 
     <form action="{{$formAction}}" method="post">
         @csrf
-        <x-input.text name="name" placeholder="Name" value="{{old('name') ?? $student->name ?? ''}}" />
-        <x-input.text name="surname" placeholder="Surname" value="{{old('surname') ?? $student->surname ?? ''}}" />
-        <x-input.text name="city" placeholder="City" value="{{old('city') ?? $student->city ?? ''}}" />
-        <x-input.date name="birthday" placeholder="Birthday" value="{{old('birthday') ?? $student->birthday ?? ''}}" />
+        <div class="flex gap-2 mb-3">
+            <x-input.text name="name" placeholder="Name" value="{{old('name') ?? $student->name ?? ''}}" class="flex-1" />
+            <x-input.text name="surname" placeholder="Surname" value="{{old('surname') ?? $student->surname ?? ''}}" class="flex-1" />
+        </div>
+        <div class="flex gap-2 mb-3">
+            <x-input.text name="city" placeholder="City" value="{{old('city') ?? $student->city ?? ''}}" class="flex-1" />
+            <x-input.date name="birthday" placeholder="Birthday" value="{{old('birthday') ?? $student->birthday ?? ''}}" class="flex-1" />
+        </div>
 
         @if (Route::currentRouteName() === 'student.edit')
             <x-input.button name="update" label="Update Student" />
