@@ -9,6 +9,10 @@
         ]"/>
     </x-slot>
 
+    @if (session('message'))
+        {{session('message')}}
+    @endif
+
     <table class="w-full">
         <thead>
             <tr>
@@ -30,9 +34,13 @@
                                 <a href="{{route('student.edit', ['student' => $student])}}">
                                     Edit
                                 </a>
-                                <a href="#">
-                                    Delete
-                                </a>
+                                <form action="{{route('student.delete', ['student' => $student])}}" method="post" class="contents">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button name="delete">
+                                        Delete
+                                    </button>
+                                </form>
                             </li>
                         </ul>
                     </td>
