@@ -71,4 +71,11 @@ class StudentController extends Controller
             'student' => $student
         ])->with('success', 'Student updated successfully!');
     }
+
+    public function delete(Student $student): RedirectResponse
+    {
+        $student->delete();
+
+        return to_route('student.list')->with('message', 'Student ' . $student->name . ' deleted successfully!');
+    }
 }
