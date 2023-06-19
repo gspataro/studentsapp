@@ -10,11 +10,11 @@
     </x-slot>
 
     @if ($errors->any())
-        {{$errors->first()}}
+        <x-alert :message="$errors->first()" type="error"/>
     @endif
 
     @if (session('success'))
-        {{session('success')}}
+        <x-alert :message="session('success')" type="success"/>
     @endif
 
     @php($formAction = match(Route::currentRouteName()) {
