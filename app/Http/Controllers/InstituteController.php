@@ -18,6 +18,15 @@ class InstituteController extends Controller
         ]);
     }
 
+    public function single(Institute $institute): View
+    {
+        $students = $institute->students->all();
+
+        return view('student.list', [
+            'students' => $students
+        ]);
+    }
+
     public function new(): View
     {
         return view('institute.edit');
