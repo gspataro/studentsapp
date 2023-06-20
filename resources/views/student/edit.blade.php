@@ -32,6 +32,9 @@
             <x-input.text name="city" placeholder="City" value="{{old('city') ?? $student->city ?? ''}}" class="flex-1" />
             <x-input.date name="birthday" placeholder="Birthday" value="{{old('birthday') ?? $student->birthday ?? ''}}" class="flex-1" />
         </div>
+        <div class="mb-3">
+            <x-input.select name="institute" :items="$institutes" class="w-full" selected="{{old('institute') ?? $student->institute->id ?? ''}}" />
+        </div>
 
         @if (Route::currentRouteName() === 'student.edit')
             <x-input.button name="update" label="Update Student" />

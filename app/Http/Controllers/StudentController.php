@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Institute;
 use App\Models\Student;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -20,7 +21,21 @@ class StudentController extends Controller
 
     public function new(): View
     {
-        return view('student.edit');
+        $instituteItems = [];
+        $institutes = Institute::all();
+
+        if (!empty($institutes)) {
+            foreach ($institutes as $institute) {
+                $instituteItems[] = [
+                    'label' => $institute->name . ' (' . $institute->city . ')',
+                    'value' => $institute->id
+                ];
+            }
+        }
+
+        return view('student.edit', [
+            'institutes' => $instituteItems
+        ]);
     }
 
     public function store(Request $request): RedirectResponse
@@ -29,7 +44,8 @@ class StudentController extends Controller
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
             'city' => 'required|max:255',
-            'birthday' => 'required|date'
+            'birthday' => 'required|date',
+            'institute' => 'required|exists:institutes,id'
         ]);
 
         $student = new Student();
@@ -38,6 +54,7 @@ class StudentController extends Controller
         $student->surname = $request->input('surname');
         $student->city = $request->input('city');
         $student->birthday = $request->input('birthday');
+        $student->institute_id = $request->input('institute');
 
         $student->save();
 
@@ -46,8 +63,21 @@ class StudentController extends Controller
 
     public function edit(Student $student): View
     {
+        $instituteItems = [];
+        $institutes = Institute::all();
+
+        if (!empty($institutes)) {
+            foreach ($institutes as $institute) {
+                $instituteItems[] = [
+                    'label' => $institute->name . ' (' . $institute->city . ')',
+                    'value' => $institute->id
+                ];
+            }
+        }
+
         return view('student.edit', [
-            'student' => $student
+            'student' => $student,
+            'institutes' => $instituteItems
         ]);
     }
 
@@ -57,13 +87,15 @@ class StudentController extends Controller
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
             'city' => 'required|max:255',
-            'birthday' => 'required|date'
+            'birthday' => 'required|date',
+            'institute' => 'required|exists:institutes,id'
         ]);
 
         $student->name = $request->input('name');
         $student->surname = $request->input('surname');
         $student->city = $request->input('city');
         $student->birthday = $request->input('birthday');
+        $student->institute_id = $request->input('institute');
 
         $student->save();
 
