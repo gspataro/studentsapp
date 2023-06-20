@@ -20,6 +20,7 @@
             <tr>
                 <th class="p-2 border-b border-b-gray-200 text-left">Name</th>
                 <th class="p-2 border-b border-b-gray-200 text-left">City</th>
+                <th class="p-2 border-b border-b-gray-200 text-center">Students</th>
                 <th class="p-2 border-b border-b-gray-200 text-left">Actions</th>
             </tr>
         </thead>
@@ -28,6 +29,7 @@
                 <tr>
                     <td class="p-2 border-b border-b-gray-200 text-left">{{$institute->name}}</td>
                     <td class="p-2 border-b border-b-gray-200 text-left">{{$institute->city}}</td>
+                    <td class="p-2 border-b border-b-gray-200 text-center">{{$institute->students->count()}}</td>
                     <td class="p-2 border-b border-b-gray-200 text-left">
                         <ul class="flex gap-1">
                             <li>
