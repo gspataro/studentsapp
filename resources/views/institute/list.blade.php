@@ -31,6 +31,9 @@
                     <td class="p-2 border-b border-b-gray-200 text-left">
                         <ul class="flex gap-1">
                             <li>
+                                <a href="{{route('institute.single', ['institute' => $institute])}}">
+                                    View
+                                </a>
                                 <a href="{{route('institute.edit', ['institute' => $institute])}}">
                                     Edit
                                 </a>
