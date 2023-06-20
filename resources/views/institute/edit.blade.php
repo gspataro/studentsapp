@@ -17,12 +17,7 @@
         <x-alert :message="session('success')" type="success"/>
     @endif
 
-    @php($formAction = match(Route::currentRouteName()) {
-        'institute.edit' => route('institute.update', ['institute' => $institute]),
-        default => route('institute.store')
-    })
-
-    <form action="{{$formAction}}" method="post">
+    <form action="{{route('institute.store', ['institute' => $institute])}}" method="post">
         @csrf
         <div class="flex gap-2 mb-3">
             <x-input.text name="name" placeholder="Name" value="{{old('name') ?? $institute->name ?? ''}}" class="flex-1" />

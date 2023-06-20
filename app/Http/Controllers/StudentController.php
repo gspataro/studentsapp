@@ -19,49 +19,7 @@ class StudentController extends Controller
         ]);
     }
 
-    public function new(): View
-    {
-        $instituteItems = [];
-        $institutes = Institute::all();
-
-        if (!empty($institutes)) {
-            foreach ($institutes as $institute) {
-                $instituteItems[] = [
-                    'label' => $institute->name . ' (' . $institute->city . ')',
-                    'value' => $institute->id
-                ];
-            }
-        }
-
-        return view('student.edit', [
-            'institutes' => $instituteItems
-        ]);
-    }
-
-    public function store(Request $request): RedirectResponse
-    {
-        $request->validate([
-            'name' => 'required|max:255',
-            'surname' => 'required|max:255',
-            'city' => 'required|max:255',
-            'birthday' => 'required|date',
-            'institute' => 'required|exists:institutes,id'
-        ]);
-
-        $student = new Student();
-
-        $student->name = $request->input('name');
-        $student->surname = $request->input('surname');
-        $student->city = $request->input('city');
-        $student->birthday = $request->input('birthday');
-        $student->institute_id = $request->input('institute');
-
-        $student->save();
-
-        return to_route('student.new')->with('success', 'Student created successfully!');
-    }
-
-    public function edit(Student $student): View
+    public function edit(?Student $student): View
     {
         $instituteItems = [];
         $institutes = Institute::all();
@@ -81,7 +39,7 @@ class StudentController extends Controller
         ]);
     }
 
-    public function update(Request $request, Student $student): RedirectResponse
+    public function store(Request $request, ?Student $student): RedirectResponse
     {
         $request->validate([
             'name' => 'required|max:255',
@@ -91,6 +49,9 @@ class StudentController extends Controller
             'institute' => 'required|exists:institutes,id'
         ]);
 
+        $newStudent = is_null($student);
+        $student = $student ?? new Student();
+
         $student->name = $request->input('name');
         $student->surname = $request->input('surname');
         $student->city = $request->input('city');
@@ -98,6 +59,10 @@ class StudentController extends Controller
         $student->institute_id = $request->input('institute');
 
         $student->save();
+
+        if ($newStudent) {
+            return to_route('student.new')->with('success', 'Student created successfully!');
+        }
 
         return to_route('student.edit', [
             'student' => $student

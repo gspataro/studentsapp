@@ -27,28 +27,6 @@ class InstituteController extends Controller
         ]);
     }
 
-    public function new(): View
-    {
-        return view('institute.edit');
-    }
-
-    public function store(Request $request): RedirectResponse
-    {
-        $request->validate([
-            'name' => 'required|max:255',
-            'city' => 'required|max:255'
-        ]);
-
-        $institute = new Institute();
-
-        $institute->name = $request->input('name');
-        $institute->city = $request->input('city');
-
-        $institute->save();
-
-        return to_route('institute.new')->with('success', 'Institute added successfully!');
-    }
-
     public function edit(Institute $institute): View
     {
         return view('institute.edit', [
@@ -56,17 +34,24 @@ class InstituteController extends Controller
         ]);
     }
 
-    public function update(Request $request, Institute $institute): RedirectResponse
+    public function store(Request $request, ?Institute $institute): RedirectResponse
     {
         $request->validate([
             'name' => 'required|max:255',
             'city' => 'required|max:255'
         ]);
 
+        $newInstitute = is_null($institute);
+        $institute = $institute ?? new Institute();
+
         $institute->name = $request->input('name');
         $institute->city = $request->input('city');
 
         $institute->save();
+
+        if ($newInstitute) {
+            return to_route('institute.new')->with('success', 'Institute added successfully!');
+        }
 
         return to_route('institute.edit', [
             'institute' => $institute
