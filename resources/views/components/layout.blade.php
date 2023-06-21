@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{isset($title) ? $title . ' - StudentsApp' : 'StudentsApp'}}</title>
         @vite('resources/css/app.css')
+        {{$styles ?? ''}}
     </head>
 
     <body class="bg-gray-300 text-black">
@@ -30,5 +31,6 @@
                 {{$slot}}
             </div>
         </div>
+        {{$scripts ?? ''}}
     </body>
 </html>
