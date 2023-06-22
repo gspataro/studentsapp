@@ -36,6 +36,8 @@
                                 <a href="{{route('student.edit', ['student' => $student])}}">
                                     Edit
                                 </a>
+                            </li>
+                            <li>
                                 <form action="{{route('student.delete', ['student' => $student])}}" method="post" class="contents">
                                     @csrf
                                     @method('DELETE')
