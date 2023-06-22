@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [StudentController::class, 'list'])->name('student.list');
-Route::get('/new', [StudentController::class, 'edit'])->name('student.new');
-Route::get('/edit/{student}', [StudentController::class, 'edit'])->name('student.edit');
-Route::post('/store/{student?}', [StudentController::class, 'store'])->name('student.store');
-Route::delete('/delete/{student}', [StudentController::class, 'delete'])->name('student.delete');
+Route::get('/student/new', [StudentController::class, 'edit'])->name('student.new');
+Route::get('/student/edit/{student}', [StudentController::class, 'edit'])->name('student.edit');
+Route::post('/student/store/{student?}', [StudentController::class, 'store'])->name('student.store');
+Route::delete('/student/delete/{student}', [StudentController::class, 'delete'])->name('student.delete');
 
 Route::get('/institutes', [InstituteController::class, 'list'])->name('institute.list');
 Route::get('/institutes/view/{institute}', [InstituteController::class, 'single'])->name('institute.single');
