@@ -33,6 +33,11 @@
                     <td class="p-2 border-b border-b-gray-200 text-left">
                         <ul class="flex gap-1">
                             <li>
+                                <a href="{{route('student.view', ['student' => $student])}}">
+                                    View
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{route('student.edit', ['student' => $student])}}">
                                     Edit
                                 </a>
