@@ -19,6 +19,13 @@ class StudentController extends Controller
         ]);
     }
 
+    public function view(Student $student): View
+    {
+        return view('student.single', [
+            'student' => $student
+        ]);
+    }
+
     public function edit(?Student $student): View
     {
         $instituteItems = [];
