@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [StudentController::class, 'list'])->name('student.list');
+Route::get('/student/view/{student}', [StudentController::class, 'view'])->name('student.view');
 Route::get('/student/new', [StudentController::class, 'edit'])->name('student.new');
 Route::get('/student/edit/{student}', [StudentController::class, 'edit'])->name('student.edit');
 Route::post('/student/store/{student?}', [StudentController::class, 'store'])->name('student.store');
