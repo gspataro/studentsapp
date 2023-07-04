@@ -13,7 +13,7 @@
                 <div class="p-3 border-b border-b-gray-200 text-left">Actions</div>
             </div>
             @foreach ($grades as $grade)
-                <livewire:grade.edit :student="$student" :grade="$grade" :editMode="$addNew" :wire:key="$loop->index" />
+                <livewire:grade.edit :student="$student" :grade="$grade" :editMode="$editMode" :wire:key="$loop->index" />
             @endforeach
             <div class="col-span-4 p-2 text-center">
                 <x-input.button label="Add Grade" wire:click="addGrade" :disabled="$editMode" />
