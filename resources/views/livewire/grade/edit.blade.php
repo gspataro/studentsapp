@@ -18,7 +18,7 @@
                     <button type="submit">Save</button>
                 </li>
                 <li>
-                    <span wire:click="cancel">Cancel</span>
+                    <span wire:click="cancel" class="cursor-pointer">Cancel</span>
                 </li>
             </ul>
         </form>
@@ -35,10 +35,10 @@
         <div class="p-2 border-b border-b-gray-200 text-left">
             <ul class="flex gap-3">
                 <li>
-                    <span wire:click="edit">Edit</span>
+                    <span wire:click="edit" class="cursor-pointer">Edit</span>
                 </li>
                 <li>
-                    <span wire:click="delete">Delete</span>
+                    <span wire:click="delete" class="cursor-pointer">Delete</span>
                 </li>
             </ul>
         </div>
