@@ -11,7 +11,6 @@ class Table extends Component
     public Student $student;
     public array $grades;
     public bool $editMode = false;
-    public bool $addNew = false;
 
     protected $listeners = [
         'refresh' => 'refresh',
@@ -34,7 +33,6 @@ class Table extends Component
     public function disableEditMode()
     {
         $this->editMode = false;
-        $this->addNew = false;
     }
 
     public function enableEditMode()
@@ -50,7 +48,6 @@ class Table extends Component
 
         $this->grades[] = new Grade();
         $this->editMode = true;
-        $this->addNew = true;
     }
 
     public function render()
